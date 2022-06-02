@@ -96,7 +96,7 @@ public class UserController extends HttpServlet {
 				
 			}
 			
-		}else if("logout".equals(action)) {
+		}else if("logout".equals(action)) {//로그아웃
 			System.out.println("UserController>logout");
 			
 			//세션값을 지운다
