@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javaex.util.WebUtil;
+
 
 @WebServlet("/main")
 public class MainController extends HttpServlet {
@@ -15,9 +17,9 @@ public class MainController extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("MainController");
+		WebUtil.forward(request, response, "WEB-INF/views/main/index.jsp");
 		
-		//포워드(index페이지)
+	
 		
 	}
 
