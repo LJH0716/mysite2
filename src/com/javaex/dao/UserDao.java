@@ -102,10 +102,7 @@ public class UserDao {
 			// sql문 준비
 			String query = "";
 			query += " select   no ";
-			query += " 			,id ";
-			query += " 			,password ";
 			query += " 			,name ";
-			query += " 			,gender ";
 			query += " from users ";
 			query += " where id = ? ";
 			query += " and password = ? ";
@@ -123,15 +120,14 @@ public class UserDao {
 			while(rs.next()) {
 			
 				int no = rs.getInt("no");
-				String id = rs.getString("id");
-				String password = rs.getString("password");
 				String name = rs.getString("name");
-				String gender = rs.getString("gender");
+				
 			
-				authUser = new UserVo(no, id, password, name, gender);
+				authUser = new UserVo();
+				authUser.setNo(no);
+				authUser.setName(name);
+				
 			}
-			
-			
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);

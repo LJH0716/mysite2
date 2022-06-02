@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
@@ -85,8 +86,26 @@ public class UserController extends HttpServlet {
 				
 			}else {
 				System.out.println("로그인 성공");
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("authUser", authUser);
+				
+				//메인 리다이렉트
+				WebUtil.redirect(request, response, "/mysite2/main");
+				
+				
 			}
 			
+		}else if("logout".equals(action)) {
+			System.out.println("UserController>logout");
+			
+			//세션값을 지운다
+			HttpSession session = request.getSession();
+			session.removeAttribute("authUser");
+			session.invalidate();
+			
+			//메인으로 리다이렉트
+			WebUtil.redirect(request, response, "/mysite2/main");
 		}
 	}
 
