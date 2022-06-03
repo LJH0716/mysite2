@@ -106,6 +106,18 @@ public class UserController extends HttpServlet {
 			
 			//메인으로 리다이렉트
 			WebUtil.redirect(request, response, "/mysite2/main");
+		
+		}else if("modifyForm".equals(action)) {//수정 폼
+			System.out.println("UserController>modifyForm");
+			
+		
+			WebUtil.redirect(request, response, "/WEB-INF/views/user/modifyForm.jsp");
+		
+		}else if("modify".equals(action)) {//수정
+			System.out.println("UserController>modify");
+			
+		
+			WebUtil.redirect(request, response, "/mysite2/main");
 		}
 	}
 

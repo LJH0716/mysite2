@@ -137,6 +137,47 @@ public class UserDao {
 		return authUser;
 
 	}
+	// 회원정보수정 -->회원정보 저장
+		public int update(UserVo userVo) {
+
+			int count = 0;
+			this.getConnection();
+
+			try {
+
+				// 3. SQL문 준비 / 바인딩 / 실행
+				// sql문 준비
+				String query = "";
+				query += " update users ";
+				query += " set  id = ? ";
+				query += " 		,password = ? ";
+				query += " 		,name = ? ";
+				query += " 		,gender = ? ";
+				query += " where no = ? ";
+
+				// 바인딩
+				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
+
+				pstmt.setString(1, userVo.getId());
+				pstmt.setString(2, userVo.getPassword());
+				pstmt.setString(3, userVo.getName());
+				pstmt.setString(4, userVo.getGender());
+				pstmt.setInt(5, userVo.getNo());
+
+				// 실행
+				count = pstmt.executeUpdate();
+
+				// 4.결과처리
+				System.out.println("[" + count + "건 수정되었습니다.]");
+
+			} catch (SQLException e) {
+				System.out.println("error:" + e);
+			}
+
+			this.close();
+			return count;
+
+		}
 	
 	}
 	
