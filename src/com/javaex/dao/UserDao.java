@@ -137,7 +137,7 @@ public class UserDao {
 		return authUser;
 
 	}
-	// 회원정보수정 -->회원정보 저장
+	// 회원 정보 수정 -->회원정보 저장
 		public int update(UserVo userVo) {
 
 			int count = 0;
