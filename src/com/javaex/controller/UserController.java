@@ -116,7 +116,36 @@ public class UserController extends HttpServlet {
 		}else if("modify".equals(action)) {//수정
 			System.out.println("UserController>modify");
 			
-		
+			//파라미터 꺼내기 * 4
+			String id = request.getParameter("id");
+			String name =request.getParameter("name");
+			String password =request.getParameter("password");
+			String gender =request.getParameter("gender");
+			
+			System.out.println(id);
+			System.out.println(name);
+			System.out.println(password);
+			System.out.println(gender);
+			
+			//Vo 만들기
+			UserVo userVo = new UserVo();
+			
+			userVo.setId(id);
+			userVo.setPassword(password);
+			userVo.setName(name);
+			userVo.setGender(gender);
+			
+			UserDao userDao = new UserDao();
+			userDao.update(userVo);
+			
+			//session 정보 업데이트
+			
+			UserVo authUser = userDao.getUser(userVo);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("authUser", authUser);
+			
+			//메인으로 리다이렉트
 			WebUtil.redirect(request, response, "/mysite2/main");
 		}
 	}
