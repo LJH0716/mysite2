@@ -47,10 +47,9 @@ and password = '1234';
 
 --update
 update users
-set id = 'jhmk0805'
-    ,password = '3333'
+set ,password = '3333'
     ,name = '송채현'
     ,gender = 'female'    
-where no = 1;
+where id = 'ddddd';
 
 

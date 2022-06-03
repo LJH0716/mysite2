@@ -149,20 +149,19 @@ public class UserDao {
 				// sql문 준비
 				String query = "";
 				query += " update users ";
-				query += " set  id = ? ";
-				query += " 		,password = ? ";
+				query += " set  password = ?  ";
 				query += " 		,name = ? ";
-				query += " 		,gender = ? ";
-				query += " where no = ? ";
+				query += " 		,gender";
+				query += " where id = ? ";
 
 				// 바인딩
 				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 
-				pstmt.setString(1, userVo.getId());
-				pstmt.setString(2, userVo.getPassword());
-				pstmt.setString(3, userVo.getName());
-				pstmt.setString(4, userVo.getGender());
-				pstmt.setInt(5, userVo.getNo());
+				pstmt.setString(1, userVo.getPassword());
+				pstmt.setString(2, userVo.getName());
+				pstmt.setString(3, userVo.getGender());
+				pstmt.setString(4, userVo.getId());
+				
 
 				// 실행
 				count = pstmt.executeUpdate();
