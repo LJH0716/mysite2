@@ -141,7 +141,6 @@ public class UserController extends HttpServlet {
 			//session 정보 업데이트
 			
 			UserVo authUser = userDao.getUser(userVo);
-			
 			HttpSession session = request.getSession();
 			session.setAttribute("authUser", authUser);
 			
