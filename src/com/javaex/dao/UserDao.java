@@ -137,47 +137,94 @@ public class UserDao {
 		return authUser;
 
 	}
-	// 회원 정보 수정 -->회원정보 저장
-		public int update(UserVo userVo) {
+	// 사용자 정보 가져오기(회원정보 수정폼, no id password name gender)
+		public UserVo getUser(int no) {
+			UserVo userVo = null;
 
-			int count = 0;
 			this.getConnection();
 
 			try {
 
 				// 3. SQL문 준비 / 바인딩 / 실행
-				// sql문 준비
+				// SQL문 준비
 				String query = "";
-				query += " update users ";
-				query += " set  password = ?  ";
-				query += " 		,name = ? ";
-				query += " 		,gender";
-				query += " where id = ? ";
+				query += " select  no, ";
+				query += "         id, ";
+				query += "         password, ";
+				query += "         name, ";
+				query += "         gender ";
+				query += " from users ";
+				query += " where no = ? ";
 
 				// 바인딩
-				pstmt = conn.prepareStatement(query); // 쿼리로 만들기
-
-				pstmt.setString(1, userVo.getPassword());
-				pstmt.setString(2, userVo.getName());
-				pstmt.setString(3, userVo.getGender());
-				pstmt.setString(4, userVo.getId());
-				
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, no);
 
 				// 실행
-				count = pstmt.executeUpdate();
+				rs = pstmt.executeQuery();
 
 				// 4.결과처리
-				System.out.println("[" + count + "건 수정되었습니다.]");
+				while (rs.next()) {
+					int userno = rs.getInt("no");
+					String id = rs.getString("id");
+					String password = rs.getString("password");
+					String name = rs.getString("name");
+					String gender = rs.getString("gender");
+
+					userVo = new UserVo(userno, id, name, password, gender);
+				}
 
 			} catch (SQLException e) {
 				System.out.println("error:" + e);
 			}
 
 			this.close();
-			return count;
 
+			return userVo;
 		}
-	
+		
+		// 사용자 정보 수정하기
+		public int update(UserVo userVo) {
+			
+			int count = -1;
+			
+			this.getConnection();
+			
+
+			try {
+
+				// 3. SQL문 준비 / 바인딩 / 실행
+				// SQL문 준비
+				String query = "";
+				query += " update users ";
+				query += " set password = ?, ";
+				query += "     name = ?, ";
+				query += "     gender = ? ";
+				query += " where no = ? ";
+				System.out.println(query);
+				
+				// 바인딩
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userVo.getPassword());
+				pstmt.setString(2, userVo.getName());
+				pstmt.setString(3, userVo.getGender());
+				pstmt.setInt(4, userVo.getNo());
+				
+				// 실행
+				count = pstmt.executeUpdate();
+
+				// 4.결과처리
+				System.out.println(count + "건이 수정되었습니다.");
+				
+			} catch (SQLException e) {
+				System.out.println("error:" + e);
+			}
+			
+			this.close();
+			
+			return count;
+			
+		}
 	}
 	
 
