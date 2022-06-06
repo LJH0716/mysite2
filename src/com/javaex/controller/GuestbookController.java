@@ -33,11 +33,13 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDao dao = new GuestbookDao();
 			GuestbookVo vo = new GuestbookVo(name, password, content);
 			dao.insert(vo);
-			System.out.println(vo.toString());
 
-			WebUtil.redirect(request, response, "/guestbook2/gbc");
+			WebUtil.redirect(request, response, "/mysite2/gbc?action=addList");
 
 		} else if ("deleteform".equals(action)) {
+
+			System.out.println("GusetBookController>deleteform");
+
 			WebUtil.forward(request, response, "/WEB-INF/deleteForm.jsp");
 
 		} else if ("delete".equals(action)) {
@@ -51,14 +53,14 @@ public class GuestbookController extends HttpServlet {
 			GuestbookDao dao = new GuestbookDao();
 			dao.delete(vo);
 
-			WebUtil.redirect(request, response, "/guestbook2/gbc");
+			WebUtil.redirect(request, response, "/mysite2/gbc?action=addList");
 
 		} else {// 리스트
 			GuestbookDao dao = new GuestbookDao();
 			List<GuestbookVo> gList = dao.getList();
 
 			request.setAttribute("guestList", gList);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/addList.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/addList.jsp");
 			rd.forward(request, response);
 		}
 

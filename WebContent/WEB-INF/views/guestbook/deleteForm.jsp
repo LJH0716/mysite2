@@ -5,14 +5,13 @@
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		System.out.println(authUser);
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -37,7 +36,6 @@
 				</ul>
 			<%}%>
 			
-			
 		</div>
 		<!-- //header -->
 
@@ -51,52 +49,61 @@
 		</div>
 		<!-- //nav -->
 
-		
 		<div id="container" class="clearfix">
-			<!-- aside 없음 -->
-			<div id="full-content">
+			<div id="aside">
+				<h2>방명록</h2>
+				<ul>
+					<li>일반방명록</li>
+					<li>방명록</li>
+				</ul>
+			</div>
+			<!-- //aside -->
+
+			<div id="content">
 			
-				<!-- content-head 없음 -->
-				<div id="index"> 
-				
-					<img id="profile-img" src="/mysite2/assets/image/profile.jpg">
-					
-					<div id="greetings">
-						<p class="text-xlarge">
-							<span class="bold">안녕하세요!!<br>
-							정우성의 MySite에 오신 것을 환영합니다.<br>
-							<br>
-							이 사이트는 웹 프로그램밍 실습과제 예제 사이트입니다.<br>
-							</span>
-							<br>
-							사이트 소개, 회원가입, 방명록, 게시판으로 구성되어 있으며<br>
-							jsp&serlvet(모델2) 방식으로 제작되었습니다.<br>
-							<br>
-							자바 수업 + 데이터베이스 수업 + 웹프로그래밍 수업<br>
-							배운 거 있는거 없는 거 다 합쳐서 만들어 놓은 사이트 입니다.<br>
-							<br>
-							(자유롭게 꾸며보세요!!)<br>
-							<br><br>
-							<a class="" href="">[방명록에 글 남기기]</a>
-						</p>	
+				<div id="content-head">
+					<h3>일반방명록</h3>
+					<div id="location">
+						<ul>
+							<li>홈</li>
+							<li>방명록</li>
+							<li class="last">일반방명록</li>
+						</ul>
 					</div>
-					<!-- //greetings -->
-					
 					<div class="clear"></div>
+				</div>
+				<!-- //content-head -->
+	
+				<div id="guestbook">
+					<form action="/mysite2/gbc" method="post">
+					<input type="text" name="action" value="delete">
+						<table id="guestDelete">
+							<colgroup>
+								<col style="width: 10%;">
+								<col style="width: 40%;">
+								<col style="width: 25%;">
+								<col style="width: 25%;">
+							</colgroup>
+							<tr>
+								<td>비밀번호</td>
+								<td><input type="password" name="password"></td>
+								<td class="text-left"><button type="submit" name="action" value="delete">삭제</button></td>
+								<td><a href="/mysite2/gbc?action=addList">[메인으로 돌아가기]</a></td>
+							</tr>
+						</table>
+						<input type='hidden' name="no" value="<%=request.getParameter("no")%>">
+					</form>
 					
 				</div>
-				<!-- //index -->
-				
+				<!-- //guestbook -->
 			</div>
-			<!-- //full-content -->
-			
+			<!-- //content  -->
 
 		</div>
-		<!-- //container -->
-		
+		<!-- //container  -->
 		
 		<div id="footer">
-			Copyright ⓒ 2022 정우성. All right reserved
+			Copyright ⓒ 2022 이정화. All right reserved
 		</div>
 		<!-- //footer -->
 
