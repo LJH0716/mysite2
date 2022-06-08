@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.UserVo" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		System.out.println(authUser);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,35 +15,12 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="/mysite2/main">MySite</a>
-			</h1>
-
-			<%if(authUser == null){%>   <!-- 로그인 실패, 로그인전 -->
-				<ul>
-					<li><a href="/mysite2/user?action=loginForm" class="btn_s">로그인</a></li>
-					<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원가입</a></li>
-				</ul>
-			<%}else {%> <!-- 로그인 성공 -->
-				<ul>
-					<li><%=authUser.getName() %> 님 안녕하세요^^</li>
-					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-				</ul>
-			<%}%>
-			
-		</div>
+	<!-- header -->
+		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 		<!-- //header -->
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="/mysite2/gbc?action=addList">방명록</a></li>
-			</ul>
-		</div>
+		<!-- nav -->
+		<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
 		<!-- //nav -->
 
 		<div id="container" class="clearfix">
@@ -60,7 +34,7 @@
 			<!-- //aside -->
 
 			<div id="content">
-			
+
 				<div id="content-head">
 					<h3>일반방명록</h3>
 					<div id="location">
@@ -73,10 +47,10 @@
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
-	
+
 				<div id="guestbook">
 					<form action="/mysite2/gbc" method="post">
-					<input type="text" name="action" value="delete">
+						<input type="text" name="action" value="delete">
 						<table id="guestDelete">
 							<colgroup>
 								<col style="width: 10%;">
@@ -87,13 +61,14 @@
 							<tr>
 								<td>비밀번호</td>
 								<td><input type="password" name="password"></td>
-								<td class="text-left"><button type="submit" name="action" value="delete">삭제</button></td>
+								<td class="text-left"><button type="submit" name="action"
+										value="delete">삭제</button></td>
 								<td><a href="/mysite2/gbc?action=addList">[메인으로 돌아가기]</a></td>
 							</tr>
 						</table>
-						<input type='hidden' name="no" value="<%=request.getParameter("no")%>">
+						
 					</form>
-					
+
 				</div>
 				<!-- //guestbook -->
 			</div>
@@ -101,10 +76,10 @@
 
 		</div>
 		<!-- //container  -->
-		
-		<div id="footer">
-			Copyright ⓒ 2022 이정화. All right reserved
-		</div>
+
+	
+		<!-- footer -->
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
 		<!-- //footer -->
 
 	</div>

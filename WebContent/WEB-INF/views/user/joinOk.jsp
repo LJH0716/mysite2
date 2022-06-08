@@ -1,11 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.UserVo" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		System.out.println(authUser);
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +10,8 @@
 <title>Insert title here</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
 	type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/user.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 
@@ -22,20 +19,14 @@
 	<div id="wrap">
 
 		<!-- header -->
-		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //header -->
 
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="/mysite2/user?action=addList">방명록</a></li>
-			</ul>
-		</div>
+		<!-- nav -->
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<!-- //nav -->
-
+		
 		<div id="container" class="clearfix">
 			<div id="aside">
 				<h2>회원</h2>
@@ -66,7 +57,8 @@
 					<div id="joinOK">
 
 						<p class="text-large bold">
-							회원가입을 축하합니다.<br> <br> <a href="/mysite2/user?action=loginForm">[로그인하기]</a>
+							회원가입을 축하합니다.<br> <br> <a
+								href="/mysite2/user?action=loginForm">[로그인하기]</a>
 						</p>
 
 					</div>
@@ -80,7 +72,7 @@
 
 
 		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 
 	</div>

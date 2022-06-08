@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.UserVo" %>
-
-<%
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		System.out.println(authUser);
-		
-	
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 
 <!DOCTYPE html>
 <html>
@@ -16,25 +9,20 @@
 <title>Insert title here</title>
 <link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
 	type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/user.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 <body>
 	<div id="wrap">
 
 		<!-- header -->
-		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //header -->
 
 
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="/mysite2/user?action=addList">방명록</a></li>
-			</ul>
-		</div>
+		<!-- nav -->
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>	
 		<!-- //nav -->
 
 		<div id="container" class="clearfix">
@@ -46,7 +34,6 @@
 					<li>회원가입</li>
 				</ul>
 			</div>
-			<!-- //aside -->
 
 			<div id="content">
 
@@ -69,8 +56,7 @@
 							<input type="text" name="action" value="login">
 							<!-- 아이디 -->
 							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label> 
-								<input
+								<label class="form-text" for="input-uid">아이디</label> <input
 									type="text" id="input-uid" name="id" value=""
 									placeholder="아이디를 입력하세요">
 							</div>
@@ -100,7 +86,7 @@
 		<!-- //container  -->
 
 		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 
 
@@ -109,4 +95,5 @@
 
 </body>
 
-</html>O
+</html>
+O
