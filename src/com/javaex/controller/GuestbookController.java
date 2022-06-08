@@ -20,6 +20,8 @@ public class GuestbookController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// 포스트 방식일 때 한글 깨짐 방지
 		request.setCharacterEncoding("UTF-8");
 
 		String action = request.getParameter("action");
@@ -60,8 +62,7 @@ public class GuestbookController extends HttpServlet {
 			List<GuestbookVo> gList = dao.getList();
 
 			request.setAttribute("guestList", gList);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/guestbook/addList.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/views/guestBook/addList.jsp");
 		}
 
 	}

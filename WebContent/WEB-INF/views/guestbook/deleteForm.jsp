@@ -7,20 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+	type="text/css">
+<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 
 <body>
 	<div id="wrap">
 
-	<!-- header -->
-		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+		<!-- header -->
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //header -->
 
 		<!-- nav -->
-		<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<!-- //nav -->
 
 		<div id="container" class="clearfix">
@@ -66,7 +68,7 @@
 								<td><a href="/mysite2/gbc?action=addList">[메인으로 돌아가기]</a></td>
 							</tr>
 						</table>
-						
+
 					</form>
 
 				</div>
@@ -77,11 +79,9 @@
 		</div>
 		<!-- //container  -->
 
-	
 		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
-
 	</div>
 	<!-- //wrap -->
 

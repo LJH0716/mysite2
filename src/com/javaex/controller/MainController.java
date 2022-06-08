@@ -12,9 +12,11 @@ import com.javaex.util.WebUtil;
 
 @WebServlet("/main")
 public class MainController extends HttpServlet {
+	//필드
 	private static final long serialVersionUID = 1L;
-       
+    //default 생성자   
    
+	//메서드
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		WebUtil.forward(request, response, "WEB-INF/views/main/index.jsp");

@@ -11,6 +11,7 @@ public class GuestbookVo {
 	public GuestbookVo() {
 	}
 
+
 	public GuestbookVo(int no, String name, String password, String content, String regDate) {
 		this.no = no;
 		this.name = name;
