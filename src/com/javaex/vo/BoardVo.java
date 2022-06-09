@@ -18,8 +18,15 @@ public class BoardVo {
 	}
 	
 	
+	public BoardVo(int no, int hit) {
+	
+		this.no = no;
+		this.hit = hit;
+	}
+
+
 	public BoardVo(int no, String title, String content) {
-		;
+		
 		this.no = no;
 		this.title = title;
 		this.content = content;

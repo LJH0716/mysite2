@@ -48,6 +48,9 @@ public class BoardController extends HttpServlet {
 
 			BoardDao boardDao = new BoardDao();
 			BoardVo boardVo = boardDao.getBoard(no);
+			
+			//조회수(읽을 경우 +1)
+			
 
 			request.setAttribute("boardVo", boardVo);
 

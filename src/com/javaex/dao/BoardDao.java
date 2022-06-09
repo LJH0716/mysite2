@@ -270,4 +270,33 @@ public class BoardDao {
 		return boardVo;
 
 	}
+	
+	//조회수
+	public int hit(BoardVo boardVo) {
+		
+		int count = -1;
+		
+		getConnection();
+		
+		try {
+			String query = ""; 
+			query += " update board ";
+			query += " set hit = ? ";
+			query += " where no = ? ";
+
+			pstmt = conn.prepareStatement(query); 
+
+			pstmt.setInt(1, boardVo.getHit());
+			pstmt.setInt(2, boardVo.getNo());
+			
+			count = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		
+		close();
+		
+		return count;
+	}
 }
