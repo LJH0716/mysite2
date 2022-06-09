@@ -62,7 +62,7 @@ public class GuestbookController extends HttpServlet {
 			List<GuestbookVo> gList = dao.getList();
 
 			request.setAttribute("guestList", gList);
-			WebUtil.forward(request, response, "/WEB-INF/views/guestBook/addList.jsp");
+			WebUtil.forward(request, response, "/WEB-INF/views/guestbook/addList.jsp");
 		}
 
 	}
