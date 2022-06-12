@@ -281,15 +281,19 @@ public class BoardDao {
 		try {
 			String query = ""; 
 			query += " update board ";
-			query += " set hit = ? ";
+			query += " set hit = hit + 1 ";
 			query += " where no = ? ";
 
-			pstmt = conn.prepareStatement(query); 
-
-			pstmt.setInt(1, boardVo.getHit());
-			pstmt.setInt(2, boardVo.getNo());
 			
-			count = pstmt.executeUpdate();
+			pstmt = conn.prepareStatement(query);
+
+			pstmt.setInt(1, no);
+			
+
+			count = pstmt.executeUpdate(); // 쿼리문 실행
+
+			// 4.결과처리
+			System.out.println("[" + count + "건의 조회수가 업데이트 되었습니다.]");
 			
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
