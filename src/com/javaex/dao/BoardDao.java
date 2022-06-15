@@ -287,7 +287,7 @@ public class BoardDao {
 			
 			pstmt = conn.prepareStatement(query);
 
-			pstmt.setInt(1, no);
+			pstmt.setInt(1, boardVo.getNo());
 			
 
 			count = pstmt.executeUpdate(); // 쿼리문 실행
